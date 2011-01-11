@@ -64,7 +64,7 @@ public class ParsedFeedData
 	
 	public void setUnitName(String unitName)
 	{
-		this.unitName = trim(unitName,10);
+		this.unitName = shorten(unitName,10);
 	}
 
 	private String shorten(String t, int l){
