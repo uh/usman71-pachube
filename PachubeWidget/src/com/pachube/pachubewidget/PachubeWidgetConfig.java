@@ -204,7 +204,7 @@ public class PachubeWidgetConfig extends Activity
         SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, 0);
         String pachubeApiKey = prefs.getString(PREF_PACHUBEAPIKEY_KEY + appWidgetId, null);
         
-        pachubeApiKey = "4ab208374436d475546a234cded8aaf39fbdaa0fcbc1af25f0eecc75bf252993";
+        pachubeApiKey = "";
         
         return pachubeApiKey;
         /*
