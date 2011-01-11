@@ -91,11 +91,7 @@ public class RestClient
             if ((entity != null) && (responseCode == 200))
             {
             	
-            	
-            	
-            	
-            	
-                InputStream instream = entity.getContent();
+                 InputStream instream = entity.getContent();
                 
                 //String result = convertStreamToString(instream);
                 //Log.i("PW", result);

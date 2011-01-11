@@ -114,16 +114,16 @@ public class PachubeWidgetConfig extends Activity
     		{
     			feedID = Integer.parseInt(cFeedID.getText().toString());
     			DsID = Integer.parseInt(cDsID.getText().toString());
-    		}
+        		usernameKey = cUsernameKey.getText().toString();
+        		passwordKey = cPasswordKey.getText().toString();
+   		}
     		catch(NumberFormatException e)
     		{
     			cFeedID.getText().clear();
     			cDsID.getText().clear();
     		}
     		
-    		usernameKey = cUsernameKey.getText().toString();
-    		passwordKey = cPasswordKey.getText().toString();
-    		    		
+     		    		
     		if((feedID != -1) && (passwordKey != null) && (usernameKey != null) && (DsID != -1))
     		{
 	    		configDone = true;
