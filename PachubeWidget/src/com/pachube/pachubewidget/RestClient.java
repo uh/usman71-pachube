@@ -31,10 +31,14 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.util.Log;
 
 public class RestClient
 {
+	
     public static ParsedFeed connect(String url, String username, String password)
     {
         HttpRequestInterceptor preemptiveAuth = new HttpRequestInterceptor() {
@@ -78,14 +82,18 @@ public class RestClient
         try
         {
             response = httpclient.execute(targetHost, httpget, localcontext);
-            
+            int responseCode = response.getStatusLine().getStatusCode();
             // Examine the response status
             Log.i("PW", response.getStatusLine().toString());
             
             HttpEntity entity = response.getEntity();
             
-            if (entity != null)
+            if ((entity != null) && (responseCode == 200))
             {
+            	
+            	
+            	
+            	
             	
                 InputStream instream = entity.getContent();
                 
