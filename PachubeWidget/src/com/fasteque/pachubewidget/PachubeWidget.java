@@ -12,7 +12,7 @@ import android.os.SystemClock;
 public class PachubeWidget extends AppWidgetProvider
 {	
 	//update rate in milliseconds
-	public static final int UPDATE_RATE = 7000;
+	public static final int UPDATE_RATE = 60000;
 
 
 	@Override

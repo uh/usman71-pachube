@@ -30,7 +30,7 @@ public class PachubeWidgetConfig extends Activity
 	int updateRate = -1;
 	boolean configDone = false;
 	
-	final static int rateValue[] = {60, 300, 600, 1800, 3600};
+	final static int rateValue[] = {10, 60, 300, 900, 3600};
 	
     private static final String PREFS_NAME = "com.fasteque.PachubeWdiget";
     private static final String PREF_FEEDID_KEY = "FEEDID_";
@@ -62,7 +62,7 @@ public class PachubeWidgetConfig extends Activity
         {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id)
             {              
-                updateRate = rateValue[(int) parent.getItemIdAtPosition(pos)];
+                updateRate = 1000 * rateValue[(int) parent.getItemIdAtPosition(pos)];
             }
             
             public void onNothingSelected(AdapterView<?> parent)

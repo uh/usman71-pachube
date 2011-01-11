@@ -35,14 +35,14 @@ public class PachubeWidgetService extends Service
 		{
 			if(isOnline())
 			{
-				ParsedFeed feed = RestClient.connect("http://www.pachube.com/api/feeds/" +
+				ParsedFeed feed = RestClient.connect("http://api.pachube.com/v1/feeds/" +
 													PachubeWidgetConfig.loadFeedIDKeyPref(getApplicationContext(), appWidgetId) + 
 													".xml", 
 													PachubeWidgetConfig.loadPachubeApiKeyPref(getApplicationContext(), appWidgetId));
 				
 				if(feed != null)
 				{
-					remoteView.setTextViewText(R.id.feed_title, feed.getFeedTitle());
+					remoteView.setTextViewText(R.id.feed_title, "DD"+feed.getFeedTitle());
 					
 					remoteView.setTextViewText(R.id.feed_description, feed.getFeedDescription());
 					

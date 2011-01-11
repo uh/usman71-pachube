@@ -29,7 +29,6 @@ public class RestClient
  
         // Prepare a request object
         HttpGet httpget = new HttpGet(url + "?key=" + pachubeKey);
-        //HttpGet httpget = new HttpGet(url+"?key=5c33ac9b89dbc95146217faeedc0e47a50f3bfda897ec7e245c74d6ef8ec124a"); 
  
         // Execute the request
         HttpResponse response;
