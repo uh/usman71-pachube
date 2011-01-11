@@ -76,7 +76,7 @@
              android:textStyle="bold"
             android:textColor="#999999"
             android:text=""
-            android:textSize="24dp"
+            android:textSize="26dp"
             android:gravity="center" >
         </TextView>
 		<TextView
