@@ -6,7 +6,7 @@
     <string name="username">Pachube username</string>
     <string name="password">Pachube password</string>
     <string name="config_rate">Update rate</string>
-    <string name="about_widget">This widget will enable you to monitor a single datastream of a Pachube feed.\n\nNote: only works with feeds that have numeric datastreams.\n\nVisit www.pachube.com for more information.</string>
+    <string name="about_widget">Monitor a single datastream of a Pachube feed (numeric IDs only). Visit www.pachube.com for more information.</string>
     <string name="spinner_config_rate">Update rate</string>
     <string name="btn_config_save">Save</string>
     <string name="btn_config_cancel">Cancel</string>

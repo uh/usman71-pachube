@@ -90,8 +90,7 @@
         		 android:prompt="@string/spinner_config_rate" />
     </TableRow>
 	<TableRow>
-		<TextView />
-        <Button android:id="@+id/btnSave" 
+       <Button android:id="@+id/btnSave" 
             	android:text="@string/btn_config_save" />
         <Button android:id="@+id/btnCancel" 
             	android:text="@string/btn_config_cancel" />
@@ -106,6 +105,5 @@
 				  android:layout_height="wrap_content"
 				  android:textColor="#000000"/>
 		<TextView />
-         
 </TableLayout>
 </LinearLayout>
