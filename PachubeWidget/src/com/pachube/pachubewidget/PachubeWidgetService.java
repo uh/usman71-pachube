@@ -47,9 +47,9 @@ public class PachubeWidgetService extends Service
 					remoteView.setTextViewText(R.id.feed_description, feed.getFeedDescription());
 					
 					if(feed.getFeedStatus().equals("frozen"))
-						remoteView.setTextColor(R.id.feed_status, Color.GRAY);
+						remoteView.setTextColor(R.id.feed_status, 0xFF00a4cb);
 					if(feed.getFeedStatus().equals("live"))
-						remoteView.setTextColor(R.id.feed_status, Color.GREEN);
+						remoteView.setTextColor(R.id.feed_status, 0xFF00cb03);
 					remoteView.setTextViewText(R.id.feed_status, feed.getFeedStatus());
 					
 					// TODO : loop all over the data

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Pachube Widget beta</string>
+    <string name="app_name">Pachube Monitor</string>
     <string name="feed_id">Feed ID</string>
     <string name="pachube_api_key">Pachube Api Key</string>
     <string name="config_rate">Update rate</string>
