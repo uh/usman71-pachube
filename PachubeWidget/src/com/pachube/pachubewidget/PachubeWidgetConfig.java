@@ -22,18 +22,21 @@ public class PachubeWidgetConfig extends Activity
 	
 	int appWidgetId = AppWidgetManager.INVALID_APPWIDGET_ID;
 	EditText cFeedID;
+	EditText cDsID;
 	EditText cPachubeApiKey;
 	Spinner cUpdateRate;
 	
 	int feedID = -1;
+	int DsID = -1;
 	String pachubeApiKey = null;
 	int updateRate = -1;
 	boolean configDone = false;
 	
 	final static int rateValue[] = {10, 60, 300, 900, 3600};
 	
-    private static final String PREFS_NAME = "com.fasteque.PachubeWdiget";
+    private static final String PREFS_NAME = "com.pachube.PachubeWdiget";
     private static final String PREF_FEEDID_KEY = "FEEDID_";
+    private static final String PREF_DATASTREAMID_KEY = "DATASTREAMID_";
     private static final String PREF_PACHUBEAPIKEY_KEY = "PACHUBEAPIKEY_";
     private static final String PREF_UPDATERATE_KEY = "UPDATERATE_";
     private static final String PREF_CONFIG_KEY = "CONFIG_";
@@ -51,6 +54,7 @@ public class PachubeWidgetConfig extends Activity
         setContentView(R.layout.pachubewidget_config);
         
         cFeedID = (EditText)findViewById(R.id.feedId);
+        cDsID = (EditText)findViewById(R.id.DsId);
         cPachubeApiKey = (EditText)findViewById(R.id.pachubeApiKey);
         
         cUpdateRate = (Spinner) findViewById(R.id.updateRate);
@@ -105,21 +109,23 @@ public class PachubeWidgetConfig extends Activity
     		try
     		{
     			feedID = Integer.parseInt(cFeedID.getText().toString());
+    			DsID = Integer.parseInt(cDsID.getText().toString());
     		}
     		catch(NumberFormatException e)
     		{
     			cFeedID.getText().clear();
+    			cDsID.getText().clear();
     		}
     		
     		pachubeApiKey = cPachubeApiKey.getText().toString();
     		
-    		if((feedID != -1) && (pachubeApiKey != null))
+    		if((feedID != -1) && (pachubeApiKey != null) && (DsID != -1))
     		{
 	    		configDone = true;
 	            
 	    		final Context context = PachubeWidgetConfig.this;
 	            
-	    		savePrefs(context, appWidgetId, feedID, pachubeApiKey, updateRate, configDone);
+	    		savePrefs(context, appWidgetId, feedID, DsID, pachubeApiKey, updateRate, configDone);
 	    		
 	    		// setup intent to update the onUpdate method
 	    		 
@@ -156,10 +162,11 @@ public class PachubeWidgetConfig extends Activity
     };
     
     // Write to the SharedPreferences object for this widget
-    static void savePrefs(Context context, int appWidgetId, int feedID, String pachubeApiKey, int updateRate, boolean configDone)
+    static void savePrefs(Context context, int appWidgetId, int feedID, int DsId, String pachubeApiKey, int updateRate, boolean configDone)
     {
         SharedPreferences.Editor prefs = context.getSharedPreferences(PREFS_NAME, 0).edit();
         prefs.putInt(PREF_FEEDID_KEY + appWidgetId, feedID);
+        prefs.putInt(PREF_DATASTREAMID_KEY + appWidgetId, DsId);
         prefs.putString(PREF_PACHUBEAPIKEY_KEY + appWidgetId, pachubeApiKey);
         prefs.putInt(PREF_UPDATERATE_KEY + appWidgetId, updateRate);
         prefs.putBoolean(PREF_CONFIG_KEY + appWidgetId, configDone);
@@ -183,6 +190,14 @@ public class PachubeWidgetConfig extends Activity
         }
         */
     }
+    
+    static int loadDsIDKeyPref(Context context, int appWidgetId)
+    {
+        SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, 0);
+        int DsID = prefs.getInt(PREF_DATASTREAMID_KEY + appWidgetId, 0);
+        
+        return DsID;
+     }
     
     static String loadPachubeApiKeyPref(Context context, int appWidgetId)
     {

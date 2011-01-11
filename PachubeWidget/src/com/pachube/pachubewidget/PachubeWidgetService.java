@@ -55,14 +55,15 @@ public class PachubeWidgetService extends Service
 					// TODO : loop all over the data
 					if(feed.feedData != null)
 					{
-						remoteView.setTextViewText(R.id.feed_data_tag, feed.feedData.get(0).getTag());
+						int thisDatastream = PachubeWidgetConfig.loadDsIDKeyPref(getApplicationContext(), appWidgetId);
+						remoteView.setTextViewText(R.id.feed_data_tag, feed.feedData.get(thisDatastream).getTag());
 						
-						if(feed.feedData.get(0).getValue().equals(""))
-							remoteView.setTextViewText(R.id.feed_data_value, "N/A");
+						if(feed.feedData.get(thisDatastream).getValue().equals(""))
+							remoteView.setTextViewText(R.id.feed_data_value, "-");
 						else
-							remoteView.setTextViewText(R.id.feed_data_value, feed.feedData.get(0).getValue());
+							remoteView.setTextViewText(R.id.feed_data_value, feed.feedData.get(thisDatastream).getValue());
 						
-						remoteView.setTextViewText(R.id.feed_data_unit, feed.feedData.get(0).getUnitName());
+						remoteView.setTextViewText(R.id.feed_data_unit, feed.feedData.get(thisDatastream).getUnitName());
 					}
 				}
 			}
