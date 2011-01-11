@@ -42,7 +42,7 @@ public class PachubeWidgetService extends Service
 				
 				if(feed != null)
 				{
-					remoteView.setTextViewText(R.id.feed_title, "DD"+feed.getFeedTitle());
+					remoteView.setTextViewText(R.id.feed_title, feed.getFeedTitle());
 					
 					remoteView.setTextViewText(R.id.feed_description, feed.getFeedDescription());
 					
