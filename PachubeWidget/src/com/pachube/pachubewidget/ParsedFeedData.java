@@ -28,7 +28,7 @@ public class ParsedFeedData
 	
 	public void setTag(String tag)
 	{
-		this.tag = tag;
+		this.tag = trim(tag,20);
 	}
 	
 	
@@ -40,7 +40,7 @@ public class ParsedFeedData
 	
 	public void setValue(String value)
 	{
-		this.value = value;
+		this.value = trim(value,10);
 	}
 	
 	
@@ -64,6 +64,13 @@ public class ParsedFeedData
 	
 	public void setUnitName(String unitName)
 	{
-		this.unitName = unitName;
+		this.unitName = trim(unitName,10);
+	}
+
+	private String trim(String t, int l){
+		if (t.length() > l){
+			t = t.substring(0, l)+"...";
+		}
+		return t;
 	}
 }
