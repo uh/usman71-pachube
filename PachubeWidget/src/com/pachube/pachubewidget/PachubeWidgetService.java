@@ -38,7 +38,7 @@ public class PachubeWidgetService extends Service
 				ParsedFeed feed = RestClient.connect("https://api.pachube.com/v1/feeds/" +
 													PachubeWidgetConfig.loadFeedIDKeyPref(getApplicationContext(), appWidgetId) + 
 													".xml", 
-													PachubeWidgetConfig.loadPachubeApiKeyPref(getApplicationContext(), appWidgetId));
+													PachubeWidgetConfig.loadUsernamePref(getApplicationContext(), appWidgetId),PachubeWidgetConfig.loadPasswordPref(getApplicationContext(), appWidgetId));
 				
 				if(feed != null)
 				{

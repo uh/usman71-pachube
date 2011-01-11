@@ -28,7 +28,7 @@ public class ParsedFeedData
 	
 	public void setTag(String tag)
 	{
-		this.tag = trim(tag,20);
+		this.tag = shorten(tag,20);
 	}
 	
 	
@@ -40,7 +40,7 @@ public class ParsedFeedData
 	
 	public void setValue(String value)
 	{
-		this.value = trim(value,10);
+		this.value = shorten(value,10);
 	}
 	
 	
@@ -67,7 +67,7 @@ public class ParsedFeedData
 		this.unitName = trim(unitName,10);
 	}
 
-	private String trim(String t, int l){
+	private String shorten(String t, int l){
 		if (t.length() > l){
 			t = t.substring(0, l)+"...";
 		}

@@ -35,7 +35,7 @@ import android.util.Log;
 
 public class RestClient
 {
-    public static ParsedFeed connect(String url, String pachubeKey)
+    public static ParsedFeed connect(String url, String username, String password)
     {
         HttpRequestInterceptor preemptiveAuth = new HttpRequestInterceptor() {
             public void process(final HttpRequest request, final HttpContext context) throws HttpException, IOException {
@@ -59,7 +59,7 @@ public class RestClient
     	
         DefaultHttpClient httpclient = new DefaultHttpClient();
 
-        httpclient.getCredentialsProvider().setCredentials(new AuthScope("www.pachube.com", 443), new UsernamePasswordCredentials("", ""));
+        httpclient.getCredentialsProvider().setCredentials(new AuthScope("www.pachube.com", 443), new UsernamePasswordCredentials(username,password));
         BasicHttpContext localcontext = new BasicHttpContext();
         BasicScheme basicAuth = new BasicScheme();
         localcontext.setAttribute("preemptive-auth", basicAuth);

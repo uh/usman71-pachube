@@ -31,7 +31,7 @@ public class ParsedFeed
 	
 	public void setFeedTitle(String feedTitle)
 	{
-		this.feedTitle = trim(feedTitle, 40);
+		this.feedTitle = shorten(feedTitle, 40);
 	}
 	
 	
@@ -56,7 +56,7 @@ public class ParsedFeed
 		this.feedStatus = feedStatus;
 	}
 	
-	private String trim(String t, int l){
+	private String shorten(String t, int l){
 		if (t.length() > l){
 			t = t.substring(0, l)+"...";
 		}

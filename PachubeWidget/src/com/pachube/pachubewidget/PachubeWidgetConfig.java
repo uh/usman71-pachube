@@ -23,12 +23,14 @@ public class PachubeWidgetConfig extends Activity
 	int appWidgetId = AppWidgetManager.INVALID_APPWIDGET_ID;
 	EditText cFeedID;
 	EditText cDsID;
-	EditText cPachubeApiKey;
+	EditText cUsernameKey;
+	EditText cPasswordKey;
 	Spinner cUpdateRate;
 	
 	int feedID = -1;
 	int DsID = -1;
-	String pachubeApiKey = null;
+	String usernameKey = null;
+	String passwordKey = null;
 	int updateRate = -1;
 	boolean configDone = false;
 	
@@ -37,7 +39,8 @@ public class PachubeWidgetConfig extends Activity
     private static final String PREFS_NAME = "com.pachube.PachubeWdiget";
     private static final String PREF_FEEDID_KEY = "FEEDID_";
     private static final String PREF_DATASTREAMID_KEY = "DATASTREAMID_";
-    private static final String PREF_PACHUBEAPIKEY_KEY = "PACHUBEAPIKEY_";
+    private static final String PREF_PACHUBEUSERNAME_KEY = "PACHUBEUSERNAME_";
+    private static final String PREF_PACHUBEPASSWORD_KEY = "PACHUBEPASSWORD_";
     private static final String PREF_UPDATERATE_KEY = "UPDATERATE_";
     private static final String PREF_CONFIG_KEY = "CONFIG_";
     
@@ -55,7 +58,8 @@ public class PachubeWidgetConfig extends Activity
         
         cFeedID = (EditText)findViewById(R.id.feedId);
         cDsID = (EditText)findViewById(R.id.DsId);
-        cPachubeApiKey = (EditText)findViewById(R.id.pachubeApiKey);
+        cUsernameKey = (EditText)findViewById(R.id.username);
+        cPasswordKey = (EditText)findViewById(R.id.password);
         
         cUpdateRate = (Spinner) findViewById(R.id.updateRate);
         ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.updateRates, android.R.layout.simple_spinner_item);
@@ -117,15 +121,16 @@ public class PachubeWidgetConfig extends Activity
     			cDsID.getText().clear();
     		}
     		
-    		pachubeApiKey = cPachubeApiKey.getText().toString();
-    		
-    		if((feedID != -1) && (pachubeApiKey != null) && (DsID != -1))
+    		usernameKey = cUsernameKey.getText().toString();
+    		passwordKey = cPasswordKey.getText().toString();
+    		    		
+    		if((feedID != -1) && (passwordKey != null) && (usernameKey != null) && (DsID != -1))
     		{
 	    		configDone = true;
 	            
 	    		final Context context = PachubeWidgetConfig.this;
 	            
-	    		savePrefs(context, appWidgetId, feedID, DsID, pachubeApiKey, updateRate, configDone);
+	    		savePrefs(context, appWidgetId, feedID, DsID, usernameKey.trim(), passwordKey.trim(), updateRate, configDone);
 	    		
 	    		// setup intent to update the onUpdate method
 	    		 
@@ -162,12 +167,13 @@ public class PachubeWidgetConfig extends Activity
     };
     
     // Write to the SharedPreferences object for this widget
-    static void savePrefs(Context context, int appWidgetId, int feedID, int DsId, String pachubeApiKey, int updateRate, boolean configDone)
+    static void savePrefs(Context context, int appWidgetId, int feedID, int DsId, String usernameKey, String passwordKey, int updateRate, boolean configDone)
     {
         SharedPreferences.Editor prefs = context.getSharedPreferences(PREFS_NAME, 0).edit();
         prefs.putInt(PREF_FEEDID_KEY + appWidgetId, feedID);
         prefs.putInt(PREF_DATASTREAMID_KEY + appWidgetId, DsId);
-        prefs.putString(PREF_PACHUBEAPIKEY_KEY + appWidgetId, pachubeApiKey);
+        prefs.putString(PREF_PACHUBEUSERNAME_KEY + appWidgetId, usernameKey);
+        prefs.putString(PREF_PACHUBEPASSWORD_KEY + appWidgetId, passwordKey);
         prefs.putInt(PREF_UPDATERATE_KEY + appWidgetId, updateRate);
         prefs.putBoolean(PREF_CONFIG_KEY + appWidgetId, configDone);
         prefs.commit();
@@ -199,25 +205,21 @@ public class PachubeWidgetConfig extends Activity
         return DsID;
      }
     
-    static String loadPachubeApiKeyPref(Context context, int appWidgetId)
+    static String loadUsernamePref(Context context, int appWidgetId)
     {
         SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, 0);
-        String pachubeApiKey = prefs.getString(PREF_PACHUBEAPIKEY_KEY + appWidgetId, null);
+        String usernameKey = prefs.getString(PREF_PACHUBEUSERNAME_KEY + appWidgetId, null);
         
-        pachubeApiKey = "";
+        return usernameKey;
+     }
+    
+    static String loadPasswordPref(Context context, int appWidgetId)
+    {
+        SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, 0);
+        String passwordKey = prefs.getString(PREF_PACHUBEPASSWORD_KEY + appWidgetId, null);
         
-        return pachubeApiKey;
-        /*
-        if (prefix != null)
-        {
-            return prefix;
-        }
-        else
-        {
-            return context.getString(R.string.appwidget_prefix_default);
-        }
-        */
-    }
+        return passwordKey;
+     }
     
     static int loadUpdateRateKeyPref(Context context, int appWidgetId)
     {
