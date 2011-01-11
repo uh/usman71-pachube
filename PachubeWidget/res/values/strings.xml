@@ -7,10 +7,10 @@
     <string name="spinner_config_rate">Update rate</string>
     <string name="btn_config_save">Save</string>
     <string name="btn_config_cancel">Cancel</string>
-    <string name="update_rate_1">1 minute</string>
-    <string name="update_rate_2">5 minutes</string>
-    <string name="update_rate_3">10 minutes</string>
-    <string name="update_rate_4">30 minutes</string>
+    <string name="update_rate_1">10 seconds</string>
+    <string name="update_rate_2">1 minute</string>
+    <string name="update_rate_3">5 minutes</string>
+    <string name="update_rate_4">15 minutes</string>
     <string name="update_rate_5">1 hour</string>
     <string name="no_connection">No connection!</string>
 </resources>
