@@ -14,7 +14,7 @@ import android.widget.RemoteViews;
 public class PachubeWidgetService extends Service
 {
 	public static final String UPDATE = "update";
-	//private static final String PREFS_NAME = "com.fasteque.PachubeWdiget";
+
 	private NetworkInfo nwkInfo = null;
 	
 	@Override

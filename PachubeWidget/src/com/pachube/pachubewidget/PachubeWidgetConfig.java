@@ -36,7 +36,7 @@ public class PachubeWidgetConfig extends Activity
 	
 	final static int rateValue[] = {10, 60, 300, 900, 3600};
 	
-    private static final String PREFS_NAME = "com.pachube.PachubeWdiget";
+    private static final String PREFS_NAME = "com.pachube.PachubeWidget";
     private static final String PREF_FEEDID_KEY = "FEEDID_";
     private static final String PREF_DATASTREAMID_KEY = "DATASTREAMID_";
     private static final String PREF_PACHUBEUSERNAME_KEY = "PACHUBEUSERNAME_";
